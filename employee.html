@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="images/logohau.jpg" alt="HR Department Logo">
+        </div>
+        <div class="links">
+            <a href="home.html">Home</a>
+            <a href="Onboarding/index.html">Onboarding</a>
+            <a href="offboarding.html">Offboarding</a>
+            <a href="employee.html" class="active">Employee Information</a>
+            <a href="#">Dashboard</a>
+        </div>
+        <div class="profile">
+            <span>User</span>
+            <img src="images/manager.png" alt="Profile">
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Employee Information</h1>
+        <div class="search">
+            <input type="text" placeholder="Search Employees" oninput="searchEmployee(this.value)">
+        </div>
+
+        <div class="employee-list">
+            <div class="employee">
+                <p>Cheena Maxine</p>
+                <div class="employee-actions">
+                    <button class="button" onclick="showDetails('employee1')">View Details</button>
+                    <button class="button">Update</button>
+                    <button class="button">Delete</button>
+                    <button class="button">Move to Offboarding</button>
+                </div>
+            </div>
+            <div class="employee">
+                <p>Dacquil Kristine Joy</p>
+                <div class="employee-actions">
+                    <button class="button" onclick="showDetails('employee2')">View Details</button>
+                    <button class="button">Update</button>
+                    <button class="button">Delete</button>
+                    <button class="button">Move to Offboarding</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="employee-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div id="modal-details"></div>
+        </div>
+    </div>
+
+    <script>
+        const employees = {
+            employee1: `
+                <h2>Cheena Maxine</h2>
+                <p><strong>Contact Number:</strong> 12345678910</p>
+                <p><strong>Email:</strong> chichi123@gmail.com</p>
+                <p><strong>Department:</strong> School of Computing</p>
+                <p><strong>Location:</strong> Hybrid</p>
+                <p><strong>Employment Type:</strong> Full-Time</p>
+                <p><strong>Status:</strong> Active</p>
+                <p><strong>Date Hired:</strong> July 20, 2024</p>
+                <p><strong>Document Submitted:</strong> Resume, Contract</p>
+            `,
+            employee2: `
+                <h2>Dacquil Kristine Joy</h2>
+                <p><strong>Contact Number:</strong> 12345678910</p>
+                <p><strong>Email:</strong> tinetine123@gmail.com</p>
+                <p><strong>Department:</strong> School of Computing</p>
+                <p><strong>Location:</strong> On-Site</p>
+                <p><strong>Employment Type:</strong> Full-Time</p>
+                <p><strong>Status:</strong> Active</p>
+                <p><strong>Date Hired:</strong> July 20, 2024</p>
+                <p><strong>Document Submitted:</strong> Resume, Contract</p>
+            `
+        };
+
+        function showDetails(employeeId) {
+            const modal = document.getElementById('employee-modal');
+            const modalDetails = document.getElementById('modal-details');
+            modalDetails.innerHTML = employees[employeeId];
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('employee-modal');
+            modal.style.display = 'none';
+        }
+
+        function searchEmployee(query) {
+            alert('Search feature triggered for: ' + query);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('employee-modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
